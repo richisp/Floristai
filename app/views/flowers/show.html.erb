@@ -15,5 +15,7 @@
   <%= @flower.flowering_time %>
 </p>
 
+<%= image_tag @flower.images.last %>
+
 <%= link_to 'Edit', edit_flower_path(@flower) %> |
 <%= link_to 'Back', flowers_path %>

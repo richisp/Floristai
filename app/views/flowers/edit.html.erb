@@ -1,6 +1,12 @@
 <h1>Editing Flower</h1>
 
-<%= render 'form', flower: @flower %>
+<%= form_with model: @flower do |form| %>
+  <%= form.text_field :title %>
+  <%= form.text_area :description, size: "60x10" %>
+  <%= form.text_field :flowering_time %>
+  <%= form.file_field :images %>
+  <%= form.submit %>
+<% end %>
 
 <%= link_to 'Show', @flower %> |
 <%= link_to 'Back', flowers_path %>
