@@ -1,9 +1,17 @@
 <h1 class="main-title">New Flower</h1>
 <%=  link_to 'Back', flowers_path, :class => 'back-btn' %>
 <%= form_with model: @flower do |form| %>
+  <% if @flower.errors.any? %>
+    <h2>Errors are present</h2>
+    <ul>
+        <% @flower.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+        <% end %>
+    </ul>
+  <% end %>
   <%= form.text_field :title, placeholder: "Title"%>
   <%= form.text_area :description, size: "60x10", placeholder: "Description" %>
   <%= form.text_field :flowering_time, placeholder: "Flowering Time" %>
   <%= form.file_field :images %>
-  <%= form.submit %>
+  <%= form.submit%>
 <% end %>
