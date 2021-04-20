@@ -21,10 +21,11 @@ class FlowersController < ApplicationController
 
   # POST /flowers or /flowers.json
   def create
-    @flower = Flower.new(flower_params)
+    @flower = Flower.new(flower_params.merge({ user_id: User.first.id }))
 
     respond_to do |format|
       if @flower.save
+        @flower.images.attach(params[:flower][:images])
         format.html { redirect_to @flower, notice: "Flower was successfully created." }
         format.json { render :show, status: :created, location: @flower }
       else
@@ -64,6 +65,6 @@ class FlowersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flower_params
-      params.require(:flower).permit(:title, :description, :flowering_time, images: [])
+      params.require(:flower).permit(:title, :description, :flowering_time)
     end
 end
