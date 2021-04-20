@@ -1,11 +1,9 @@
 <h1 class="main-title">New Flower</h1>
-
+<%=  link_to 'Back', flowers_path, :class => 'back-btn' %>
 <%= form_with model: @flower do |form| %>
-  <%= form.text_field :title %>
-  <%= form.text_area :description, size: "60x10" %>
-  <%= form.text_field :flowering_time %>
+  <%= form.text_field :title, placeholder: "Title"%>
+  <%= form.text_area :description, size: "60x10", placeholder: "Description" %>
+  <%= form.text_field :flowering_time, placeholder: "Flowering Time" %>
   <%= form.file_field :images %>
   <%= form.submit %>
 <% end %>
-
-<%= link_to 'Back', flowers_path %>

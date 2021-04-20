@@ -15,7 +15,9 @@
   <%= @flower.flowering_time %>
 </p>
 
-<%= image_tag @flower.images.last %>
+<%= image_tag @flower.images.last, :class => 'image'  %>
 
-<%= link_to 'Edit', edit_flower_path(@flower) %> |
-<%= link_to 'Back', flowers_path %>
+<br> </br>
+
+<%= link_to 'Edit', edit_flower_path(@flower), :class => 'back-btn' %> |
+<%= link_to 'Back', flowers_path, :class => 'back-btn' %>
