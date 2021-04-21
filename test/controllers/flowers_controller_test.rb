@@ -3,6 +3,7 @@ require "test_helper"
 class FlowersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @flower = flowers(:one)
+    @user   = users(:one)
   end
 
   test "should get index" do
@@ -24,7 +25,7 @@ class FlowersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show flower" do
-    get flower_url(@flower)
+    get flowers_url(@flower)
     assert_response :success
   end
 
@@ -34,7 +35,7 @@ class FlowersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update flower" do
-    patch flower_url(@flower), params: { flower: { description: @flower.description, flowering_time: @flower.flowering_time, title: @flower.title } }
+    patch flower_url(@flower), params: { flower: { description: @flower.description, flowering_time: @flower.flowering_time, title: @flower.title, user_id: @user.id } }
     assert_redirected_to flower_url(@flower)
   end
 
