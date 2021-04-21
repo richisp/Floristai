@@ -22,10 +22,10 @@ class FlowersController < ApplicationController
   # POST /flowers or /flowers.json
   def create
     @flower = Flower.new(flower_params.merge({ user_id: User.first.id }))
+    @flower.images.attach(params[:flower][:images])
 
     respond_to do |format|
       if @flower.save
-        @flower.images.attach(params[:flower][:images])
         format.html { redirect_to @flower, notice: "Flower was successfully created." }
         format.json { render :show, status: :created, location: @flower }
       else
