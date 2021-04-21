@@ -39,6 +39,8 @@ class FlowersController < ApplicationController
   def update
     respond_to do |format|
       if @flower.update(flower_params)
+        @flower.images.destroy_all
+        @flower.images.attach(params[:flower][:images])
         format.html { redirect_to @flower, notice: "Flower was successfully updated." }
         format.json { render :show, status: :ok, location: @flower }
       else
