@@ -47,7 +47,7 @@ jobs:
           PGHOST: localhost
           PGUSER: myapp
         run: |
-          rake db:setup
+          bundler exec rake db:setup
 
       - name: Run tests
         run: rails test
