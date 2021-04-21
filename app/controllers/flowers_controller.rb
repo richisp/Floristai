@@ -65,6 +65,6 @@ class FlowersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flower_params
-      params.require(:flower).permit(:title, :description, :flowering_time)
+      params.require(:flower).permit(:title, :description, :flowering_time, :user_id)
     end
 end
