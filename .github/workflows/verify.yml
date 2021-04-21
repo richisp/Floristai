@@ -50,4 +50,4 @@ jobs:
           bundler exec rake db:setup
 
       - name: Run tests
-        run: rails test
+        run: bundler exec rake test
