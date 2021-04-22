@@ -1,22 +1,4 @@
-<p id="notice"><%= notice %></p>
-<!-- -->
-
-<head onload="renderTime();">
-  
-  <h3 id="clockDisplay" style="
-    font-family: arial;
-    font-weight: bold;
-    color: #000000;
-    border: 1px solid #000000;
-    width: 260px;
-    padding: 10px;
-    text-align: center;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-  "></h3>
-  <script>
-    function renderTime(){
+function renderTime(){
     var mydate = new Date();
     var year = mydate.getYear();
         if(year < 1000){
@@ -57,37 +39,3 @@
         setTimeout("renderTime()",1000);
 }
 renderTime();
-  </script>
-</head>
-
-<h1>Flowers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Flowering time</th>
-      
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody onload="renderTime();
-    <% @flowers.each do |flower| %>
-      <tr>
-        <body id="clockDisplay" class="container"></body>
-        <td><%= flower.title %></td>
-        <td><%= flower.description %></td>
-        <td><%= flower.flowering_time %></td>
-        <td><%= link_to 'Show', flower %></td>
-        <td><%= link_to 'Edit', edit_flower_path(flower) %></td>
-        <td><%= link_to 'Destroy', flower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Flower', new_flower_path %>
