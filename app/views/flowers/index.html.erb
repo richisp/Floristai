@@ -8,14 +8,14 @@
     font-weight: bold;
     color: #F67155;
     border: 1px solid #000000;
-    width: 260px;
+    width: 318px;
     padding: 10px;
     text-align: center;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
   "></h3>
-  <script>
+  <script >
     function renderTime(){
     var mydate = new Date();
     var year = mydate.getYear();
@@ -25,8 +25,8 @@
     var day = mydate.getDay();
     var month = mydate.getMonth();
     var daym = mydate.getDate();
-    var dayarray = new Array("Sekmadienis","Pirmadienis","Antradienis","Treciadienis","Ketvirtadienis","Penktadienis","Sestadienis");
-    var montharray = new Array("1","2","3","4","5","6","7","8","9","10","11","12");
+    var dayarray = new Array("Sekmadienis","Pirmadienis","Antradienis","Trečiadienis","Ketvirtadienis","Penktadienis","Šeštadienis");
+    var montharray = new Array("Sausio","Vasario","Kovo","Balandžio","Gegužės","Birželio","Liepos","Rugpjūčio","Rugsėjo","Spalio","Lapkričio","Gruodžio");
     
     var currentTime = new Date();
     var h = currentTime.getHours();
@@ -51,8 +51,8 @@
         }
         
         var myClock = document.getElementById("clockDisplay");
-        myClock.textContent = "" + dayarray[day]+ " " + daym +" " + montharray[month] + " " + year + " | " + h + ":" + m + ":" + s;
-        myClock.innerText = "" + dayarray[day]+ " " + daym +" " + montharray[month] + " " + year + " | " + h + ":" + m + ":" + s;
+        myClock.textContent = "" + year +  " " + montharray[month] + " " + daym +" " + " | " + h + ":" + m + ":" + s + " | " + dayarray[day];
+        myClock.innerText = "" + year +  " " + montharray[month] + " " + daym +" " + " | " + h + ":" + m + ":" + s + " | " + dayarray[day];
         
         setTimeout("renderTime()",1000);
 }
@@ -73,7 +73,7 @@ renderTime();
     </tr>
   </thead>
 
-  <tbody onload="renderTime();
+  <tbody
     <% @flowers.each do |flower| %>
       <tr>
         <body id="clockDisplay" class="container"></body>
