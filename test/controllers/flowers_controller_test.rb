@@ -46,4 +46,16 @@ class FlowersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to flowers_url
   end
+
+  test "flower with desciption - true" do
+    user = User.new
+    flower = Flower.new(title:"gele",desciption:"Labai grazi",user_id:user.id)
+    assert flower.valid?
+  end
+  test "flower with desciption - false" do
+    user = User.new
+    flower = Flower.new()
+    assert !flower.valid?
+  end
+
 end
