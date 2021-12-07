@@ -3,7 +3,9 @@
 one:
   order: one
   flower: one
+  quantity: 1
 
 two:
   order: two
   flower: two
+  quantity: 2
