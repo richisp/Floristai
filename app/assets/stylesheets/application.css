@@ -21,9 +21,9 @@
      text-align: center;
      padding-top: 150px;
      padding-bottom: 150px;
-     background-image: url("http://www.danosgeles.lt/wp-content/uploads/2021/04/gal-3-1.png");
+     background-image: url("https://img1.10bestmedia.com/Images/Photos/380637/GettyImages-910131818_54_990x660.jpg");
      background-repeat: no-repeat;
-     background-size: auto;
+     background-size: cover;
      background-position: left center;
      color: white;
      -webkit-text-stroke: 1px black;
@@ -36,10 +36,31 @@ body{
 table{
  width: 100%;
 }
-.title, .desc, .flowering{
-    width: 33%;
-    font-size: 25px;
+
+#flowers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 30px;
 }
+
+#flowers td, #flowers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#flowers tr:nth-child(even){background-color: #f2f2f2;}
+
+#flowers tr:hover {background-color: #ddd;}
+
+#flowers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
 .btn-divider{
     width: 100%;
     margin: auto;
@@ -95,4 +116,4 @@ input[type=button], input[type=submit], input[type=reset] {
 .image{
     width: 75%;
     max-width: 1080px;
-} 
+}
