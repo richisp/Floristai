@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Id</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user_id %></td>
+        <td><%= link_to 'Show', order %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

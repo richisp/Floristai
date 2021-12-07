@@ -59,14 +59,21 @@ class FlowersController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flower
-      @flower = Flower.find(params[:id])
-    end
+  def create_order
+    order = Order.create!(user: User.first)
 
-    # Only allow a list of trusted parameters through.
-    def flower_params
-      params.require(:flower).permit(:title, :description, :flowering_time, :user_id)
-    end
+    order.order_flowers.create(flower_id: params[:id], quantity: params[:quantity])
+
+    redirect_to flowers_path
+  end
+
+  private
+
+  def set_flower
+    @flower = Flower.find(params[:id])
+  end
+
+  def flower_params
+    params.require(:flower).permit(:title, :description, :flowering_time, :user_id)
+  end
 end
