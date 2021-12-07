@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <strong>Order (ID: <%= @order.id %>)</strong>
+</h1>
+
+<p>
+  <strong>User ID:</strong>
+  <%= @order.user_id %>
+</p>
+
+<h2>Order Flowers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Flower ID</th>
+      <th>Quantity</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.order_flowers.each do |order_flower| %>
+      <tr>
+        <td><%= order_flower.id %></td>
+        <td><%= order_flower.flower_id %></td>
+        <td><%= order_flower.quantity %></td>
+        <td><%= order_flower.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', orders_path %>

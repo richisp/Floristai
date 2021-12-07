@@ -18,5 +18,13 @@
 <%= image_tag @flower.images.last, :class => 'image'%>
 <br> </br>
 
+<h2>Order flower</h2>
+<%= form_with url: create_order_flower_path(@flower), method: :post do |f| %>
+  <fieldset>
+    <%= f.number_field :quantity %>
+    <%= f.submit 'Order' %>
+  </fieldset>
+<% end %>
+
 <%= link_to 'Edit', edit_flower_path(@flower), :class => 'back-btn' %> |
 <%= link_to 'Back', flowers_path, :class => 'back-btn' %>
