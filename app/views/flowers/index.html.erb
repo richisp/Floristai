@@ -5,15 +5,17 @@
 <%= form_tag flowers_path, method: :get do %>
   <%= label_tag :query, "Search for:" %>
   <%= text_field_tag :query, params[:query] %>
-  <%= submit_tag "Search", name: nil %>
 <% end %>
 
-<table>
+<table id="flowers">
   <thead>
-    <tr class="properties" >
-      <th class="title">Title</th>
-      <th class="desc">Description</th>
-      <th class="flowering">Flowering time</th>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Flowering time</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -36,5 +38,9 @@
 <div class="btn-divider">
   <button class = "new-flower">
     <%= link_to 'New Flower', new_flower_path %>
+  </button>
+
+  <button class = "new-flower">
+    <%= link_to 'Orders', orders_path %>
   </button>
 </div>
