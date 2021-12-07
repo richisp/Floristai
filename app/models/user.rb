@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :comments
-  has_many :flowers
-  has_many :orders
+  has_many :comments, dependent: :destroy
+  has_many :flowers, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end
