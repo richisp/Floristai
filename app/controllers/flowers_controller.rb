@@ -3,7 +3,7 @@ class FlowersController < ApplicationController
 
   # GET /flowers or /flowers.json
   def index
-    @flowers = Flower.all
+    @flowers = Flower.search(params[:query])
   end
 
   # GET /flowers/1 or /flowers/1.json
@@ -74,6 +74,6 @@ class FlowersController < ApplicationController
   end
 
   def flower_params
-    params.require(:flower).permit(:title, :description, :flowering_time, :user_id)
+    params.require(:flower).permit(:title, :description, :flowering_time, :user_id, :query)
   end
 end

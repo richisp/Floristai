@@ -6,4 +6,18 @@ class Flower < ApplicationRecord
   has_many :order_flowers, dependent: :destroy
 
   validates :title, presence: true
+
+  def self.search(query)
+    if query.present?
+      flowers = find_by(title: query)
+
+      if flowers
+        where(title: query)
+      else
+        []
+      end
+    else
+      all
+    end
+  end
 end

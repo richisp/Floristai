@@ -2,6 +2,12 @@
 
 <h1 class="main-title">Flowers</h1>
 
+<%= form_tag flowers_path, method: :get do %>
+  <%= label_tag :query, "Search for:" %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
 <table>
   <thead>
     <tr class="properties" >
