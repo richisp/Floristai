@@ -26,8 +26,13 @@ class OrdersController < ApplicationController
   def generate_report
     year, month = params[:month].split('-')
 
-    @orders = Order.where("cast(strftime('%Y', created_at) as int) = ?", year)
-                   .where("cast(strftime('%m', created_at) as int) = ?", month)
+    @orders = if Rails.env.developemt?
+                Order.where("cast(strftime('%Y', created_at) as int) = ?", year)
+                     .where("cast(strftime('%m', created_at) as int) = ?", month)
+              else
+                Order.where('extract(year  from created_at) = ?', year)
+                     .where('extract(month from created_at) = ?', month)
+              end
 
     respond_to do |format|
       format.csv do
