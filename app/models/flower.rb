@@ -3,7 +3,7 @@ class Flower < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :order_flowers, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   validates :title, presence: true
 

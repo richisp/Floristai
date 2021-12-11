@@ -60,11 +60,20 @@ class FlowersController < ApplicationController
   end
 
   def create_order
-    order = Order.create!(user: Current.user.id)
+    order = Order.new(
+      user_id: Current.user.id,
+      flower_id: params[:id],
+      quantity: params[:quantity],
+      status: 'pending'
+    )
 
-    order.order_flowers.create(flower_id: params[:id], quantity: params[:quantity])
-
-    redirect_to flowers_path
+    respond_to do |format|
+      if order.save
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
+      else
+        format.html { redirect_to root_path, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

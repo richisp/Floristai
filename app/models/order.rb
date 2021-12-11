@@ -1,4 +1,10 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :order_flowers, dependent: :destroy
+  belongs_to :flower
+
+  enum status: {
+    pending: 0,
+    finished: 1,
+    canceled: 2
+  }
 end

@@ -6,7 +6,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      post :finish
+      post :cancel
+      get :generate_report, to: 'orders#generate_report', as: 'generate_report', defaults: { format: :csv }
+    end
+  end
+
   resources :users
 
   get 'sign_up', to: 'registrations#new'
