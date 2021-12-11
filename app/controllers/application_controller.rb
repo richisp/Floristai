@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
     # allows only logged in user
     redirect_to sign_in_path, alert: 'You must be signed in' if Current.user.nil?
   end
+
+  def restricted_admin_access!
+    redirect_to root_path, alert: 'You must be an admin' unless Current.user.admin? || Current.user.superadmin?
+  end
+
+  def restricted_superadmin_access!
+    redirect_to root_path, alert: 'You must be a superadmin' unless Current.user.superadmin?
+  end
 end

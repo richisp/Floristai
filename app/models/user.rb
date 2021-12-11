@@ -5,4 +5,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   has_secure_password
+
+  enum role: {
+    basic: 0,
+    admin: 1,
+    superadmin: 2
+  }
 end

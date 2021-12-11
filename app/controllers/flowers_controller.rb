@@ -1,6 +1,7 @@
 class FlowersController < ApplicationController
   before_action :require_user_logged_in!
   before_action :set_flower, only: %i[show edit update destroy]
+  before_action :restricted_admin_access!, except: %i[index]
 
   # GET /flowers or /flowers.json
   def index
@@ -20,7 +21,7 @@ class FlowersController < ApplicationController
 
   # POST /flowers or /flowers.json
   def create
-    @flower = Flower.new(flower_params.merge({ user_id: User.first.id }))
+    @flower = Flower.new(flower_params.merge({ user_id: Current.user.id }))
 
     respond_to do |format|
       if @flower.save
@@ -59,7 +60,7 @@ class FlowersController < ApplicationController
   end
 
   def create_order
-    order = Order.create!(user: User.first)
+    order = Order.create!(user: Current.user.id)
 
     order.order_flowers.create(flower_id: params[:id], quantity: params[:quantity])
 

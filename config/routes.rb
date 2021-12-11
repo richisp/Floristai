@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders
+  resources :users
 
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
