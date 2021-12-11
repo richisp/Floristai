@@ -1,5 +1,4 @@
 <h1 class="main-title">New Flower</h1>
-<%=  link_to 'Back', flowers_path, :class => 'back-btn' %>
 
 <%= form_with model: @flower do |form| %>
   <% if @flower.errors.any? %>
@@ -15,4 +14,5 @@
   <%= form.text_field :flowering_time, placeholder: "Flowering Time" %>
   <%= form.file_field :images %>
   <%= form.submit%>
+  <%=  link_to 'Back', flowers_path, :class => 'back-btn' %>
 <% end %>
