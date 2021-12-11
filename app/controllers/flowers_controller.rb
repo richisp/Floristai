@@ -1,5 +1,6 @@
 class FlowersController < ApplicationController
-  before_action :set_flower, only: %i[ show edit update destroy ]
+  before_action :require_user_logged_in!
+  before_action :set_flower, only: %i[show edit update destroy]
 
   # GET /flowers or /flowers.json
   def index
@@ -7,8 +8,7 @@ class FlowersController < ApplicationController
   end
 
   # GET /flowers/1 or /flowers/1.json
-  def show
-  end
+  def show; end
 
   # GET /flowers/new
   def new
@@ -16,8 +16,7 @@ class FlowersController < ApplicationController
   end
 
   # GET /flowers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /flowers or /flowers.json
   def create
