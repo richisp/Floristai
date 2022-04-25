@@ -1,0 +1,13 @@
+<h1>Google Authenticator</h1>
+
+<%- if @user.google_secret_value.present? %>
+  <div class="field">
+    <%= image_tag @user.google_qr_uri %>
+  </div>
+<%- end %>
+
+<div class = 'back-btn'>
+  <%= link_to @link_text, update_google_authenticator_path, method: :post %>
+</div>
+
+<%= link_to 'Back', flowers_path, :class => 'back-btn' %>

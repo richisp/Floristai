@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    member do
+
+    end
+  end
 
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'
@@ -27,4 +31,7 @@ Rails.application.routes.draw do
   post 'password/reset', to: 'password_resets#create'
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
+
+  get 'google_authenticator', to: 'users#google_authenticator'
+  post :update_google_authenticator, to: 'users#update_google_authenticator'
 end

@@ -11,6 +11,10 @@
     <%= link_to 'Forgot your password?', password_reset_path %>
     </p>
     <p>
+    <%= f.label 'Google Authenticator Code:'%><br>
+    <%= f.text_field :ga_code, id: 'ga_code' %>
+    </p>
+    <p>
     <%= f.submit 'Log In' %>
     </p>
   <% end %>

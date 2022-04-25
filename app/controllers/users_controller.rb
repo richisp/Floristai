@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :restricted_superadmin_access!
+  before_action :restricted_superadmin_access!, except: %i[google_authenticator update_google_authenticator]
   before_action :set_user, only: %i[edit update destroy]
 
   # GET /users or /users.json
@@ -35,6 +35,23 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def google_authenticator
+    @user = Current.user
+    @link_text = @user.google_secret_value.present? ? 'Disable' : 'Enable'
+  end
+
+  def update_google_authenticator
+    user = Current.user
+
+    if user.google_secret_value.present?
+      user.clear_google_secret!
+    else
+      user.set_google_secret
+    end
+
+    redirect_to google_authenticator_url
   end
 
   private
