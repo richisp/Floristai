@@ -17,6 +17,7 @@
   <% if Current.user %>
     <p>Logged in as: <strong><%= Current.user.email %></strong></p><br>
     <%= link_to 'Edit Password', edit_password_path %>
+    <%= link_to 'Google Authenticator', google_authenticator_path %>
     <%= button_to 'Logout', logout_path, method: :delete %>
   <% else %>
     <%= link_to 'Sign Up', sign_up_path %>

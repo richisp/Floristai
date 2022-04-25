@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_google_authenticated
+
   has_many :comments, dependent: :destroy
   has_many :flowers, dependent: :destroy
   has_many :orders, dependent: :destroy
